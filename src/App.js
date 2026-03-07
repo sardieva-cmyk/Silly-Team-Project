@@ -1,4 +1,7 @@
-// src/App.js (упрощенная версия)
+// src/App.js
+// Основной компонент приложения, точка входа React-части.
+// Оборачивает контент в Router, подключает Header и
+// определяет маршруты для страниц каталога, моих курсов и деталей.
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
@@ -11,6 +14,7 @@ function App() {
     <Router>
       <Header />
       <div className="container"> 
+        {/* маршруты: каталог, мои курсы, детали и 404 */}
         <Routes>
           <Route path="/" element={<Catalog />} />
           <Route path="/my-courses" element={<MyCourses />} />

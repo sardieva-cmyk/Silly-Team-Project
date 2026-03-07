@@ -1,3 +1,6 @@
+// src/store/index.js
+// Собирает rootReducer и создаёт Redux store.
+// Подключает devtools для удобной отладки.
 import { createStore, combineReducers } from 'redux';
 // Импортируем редюсеры по твоему пути из папки actions
 import { userReducer } from './actions/reducers/userReducer';

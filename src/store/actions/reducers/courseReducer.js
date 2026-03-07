@@ -1,3 +1,5 @@
+// src/store/actions/reducers/courseReducer.js
+// Редюсер, хранящий каталог всех доступных курсов.
 const initialState = {
   allCourses: [
     { id: 1, title: "React Developer", mentor: "Abdurakhim", price: "200$", desc: "Mastering hooks and Redux" },

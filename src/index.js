@@ -1,3 +1,9 @@
+/*
+ src/index.js
+ Точка входа клиентского приложения.
+ Инициализирует корневой ReactDOM, оборачивает <App />
+ в Redux Provider для доступа к хранилищу по всему дереву.
+*/
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';

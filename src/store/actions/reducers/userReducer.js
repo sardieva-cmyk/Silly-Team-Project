@@ -1,3 +1,5 @@
+// src/store/actions/reducers/userReducer.js
+// Редюсер состояния пользователя: имя и список ID курсов, на которые он записан.
 import { ENROLL_COURSE, UNROLL_COURSE } from '../courseActions'; // Проверь путь импорта!
 
 const initialState = {

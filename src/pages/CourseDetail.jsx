@@ -1,3 +1,5 @@
+// src/pages/CourseDetail.jsx
+// Показывает подробности одного курса на основе ID из URL.
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';

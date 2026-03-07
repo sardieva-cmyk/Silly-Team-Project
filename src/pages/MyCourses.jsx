@@ -1,3 +1,6 @@
+// src/pages/MyCourses.jsx
+// Страница с курсами, куда пользователь уже записался.
+// Позволяет отменить запись.
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { unrollCourse } from '../store/actions/courseActions';

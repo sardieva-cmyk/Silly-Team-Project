@@ -1,3 +1,7 @@
+// src/pages/Catalog.jsx
+// Страница списка курсов: показывает все курсы,
+// позволяет записаться на них, если пользователь ещё не
+// записан.
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { enrollCourse } from '../store/actions/courseActions';
