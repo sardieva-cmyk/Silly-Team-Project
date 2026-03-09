@@ -1,30 +1,58 @@
-// src/components/Header.jsx
-// Простая навигационная шапка с подсчётом записанных курсов
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  // Получаем данные о пользователе и количестве курсов из Store
+  const user = useSelector(state => state.user.currentUser);
   const count = useSelector(state => state.user.enrolledCourses.length);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch({ type: 'LOGOUT' });
+    navigate('/login'); // Перенаправляем на логин после выхода
+  };
 
   return (
     <header style={headerStyle}>
       <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>
         <h1>IT-School</h1>
       </Link>
-      <nav>
+      
+      <nav style={{ display: 'flex', alignItems: 'center' }}>
         <Link to="/" style={linkStyle}>Каталог</Link>
-        <Link to="/my-courses" style={linkStyle}>
-          Мои курсы <span style={badgeStyle}>{count}</span>
-        </Link>
+        
+        {/* Студент видит "Мои курсы", Админ — нет (ему они не нужны для обучения) */}
+        {user?.role === 'student' && (
+          <Link to="/my-courses" style={linkStyle}>
+            Мои курсы <span style={badgeStyle}>{count}</span>
+          </Link>
+        )}
+
+        {/* Секция профиля */}
+        <div style={{ marginLeft: '30px', borderLeft: '1px solid #555', paddingLeft: '20px' }}>
+          {user ? (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+              <span style={{ fontSize: '14px' }}>
+                {user.name} <b style={{ color: '#2ecc71' }}>({user.role})</b>
+              </span>
+              <button onClick={handleLogout} style={logoutButtonStyle}>Выйти</button>
+            </div>
+          ) : (
+            <Link to="/login" style={loginLinkStyle}>Войти</Link>
+          )}
+        </div>
       </nav>
     </header>
   );
 };
 
-// Простые стили для наглядности
+// Стили
 const headerStyle = { display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 40px', background: '#2c3e50', color: 'white' };
 const linkStyle = { color: 'white', marginLeft: '20px', textDecoration: 'none', fontWeight: 'bold' };
 const badgeStyle = { background: '#e74c3c', padding: '2px 8px', borderRadius: '10px', fontSize: '12px' };
+const logoutButtonStyle = { background: 'transparent', border: '1px solid #e74c3c', color: '#e74c3c', padding: '5px 10px', borderRadius: '5px', cursor: 'pointer', fontWeight: 'bold' };
+const loginLinkStyle = { ...linkStyle, color: '#2ecc71' };
 
 export default Header;

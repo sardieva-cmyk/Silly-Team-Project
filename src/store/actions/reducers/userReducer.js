@@ -1,28 +1,32 @@
 // src/store/actions/reducers/userReducer.js
-// Редюсер состояния пользователя: имя и список ID курсов, на которые он записан.
-import { ENROLL_COURSE, UNROLL_COURSE } from '../courseActions'; // Проверь путь импорта!
+import { ENROLL_COURSE, UNROLL_COURSE } from '../courseActions'; 
 
 const initialState = {
-  name: "Student",
-  enrolledCourses: [] // Массив для хранения ID курсов
+  currentUser: JSON.parse(localStorage.getItem('user')) || null,
+  enrolledCourses: JSON.parse(localStorage.getItem('myEnrolledCourses')) || []
 };
 
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ENROLL_COURSE:
-      // Защита: не записывать на один и тот же курс дважды
-      if (state.enrolledCourses.includes(action.payload)) return state;
-      
-      return {
-        ...state,
-        enrolledCourses: [...state.enrolledCourses, action.payload]
-      };
+    case 'LOGIN':
+      localStorage.setItem('user', JSON.stringify(action.payload));
+      return { ...state, currentUser: action.payload };
 
-    case UNROLL_COURSE:
-      return {
-        ...state,
-        enrolledCourses: state.enrolledCourses.filter(id => id !== action.payload)
-      };
+    case 'LOGOUT':
+      localStorage.removeItem('user');
+      return { ...state, currentUser: null, enrolledCourses: [] };
+
+    case ENROLL_COURSE: // Используем константу из импорта
+      const updatedEnrolled = [...state.enrolledCourses, action.payload];
+      localStorage.setItem('myEnrolledCourses', JSON.stringify(updatedEnrolled));
+      return { ...state, enrolledCourses: updatedEnrolled };
+
+    // --- ВОТ ЭТОГО БЛОКА НЕ ХВАТАЛО: ---
+    case UNROLL_COURSE: 
+      const filteredCourses = state.enrolledCourses.filter(id => id !== action.payload);
+      localStorage.setItem('myEnrolledCourses', JSON.stringify(filteredCourses));
+      return { ...state, enrolledCourses: filteredCourses };
+    // ----------------------------------
 
     default:
       return state;
