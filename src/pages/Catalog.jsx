@@ -57,7 +57,7 @@ const Catalog = () => {
                   onClick={() => dispatch({ type: 'DELETE_COURSE', payload: course.id })}
                   style={{ ...buttonStyle, backgroundColor: '#e74c3c' }}
                 >
-                  Удалить (CRUD: Delete)
+                  Удалить 
                 </button>
               ) : (
                 <button 
