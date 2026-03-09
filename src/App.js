@@ -1,10 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Catalog from './pages/Catalog';
 import MyCourses from './pages/MyCourses';
 import CourseDetail from './pages/CourseDetail';
 import Login from './pages/Login'; // Импортируем страницу входа
+import About from './pages/About'; // Страница "О проекте"
 
 function App() {
   return (
@@ -24,10 +26,14 @@ function App() {
           {/* Детальная информация о курсе */}
           <Route path="/course/:id" element={<CourseDetail />} />
           
+          {/* О проекте */}
+          <Route path="/about" element={<About />} />
+          
           {/* Обработка несуществующих страниц */}
-          <Route path="*" element={<h2 style={{textAlign: 'center', marginTop: '50px'}}>404: Страница не найдена</h2>} />
+          <Route path="*" element={<h2 style={{textAlign: 'center', marginTop: '50px', color: '#ff6a3d'}}>404: Страница не найдена</h2>} />
         </Routes>
       </div>
+      <Footer />
     </Router>
   );
 }

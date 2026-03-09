@@ -21,7 +21,7 @@ const MyCourses = () => {
   const myEnrolledCourses = allCourses.filter(course => enrolledIds.includes(course.id));
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{ padding: '20px', backgroundColor: '#0f0f0f' }}>
       <h2>Мои записи</h2>
 
       {myEnrolledCourses.length === 0 ? (
@@ -40,9 +40,10 @@ const MyCourses = () => {
                   padding: '16px',
                   borderRadius: '10px',
                   width: '260px',
-                  backgroundColor: currentStatus === 'completed' ? '#e8f5e9' : 'white',
+                  backgroundColor: currentStatus === 'completed' ? '#161b22' : '#0f0f0f',
                   boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-                  transition: 'all 0.2s'
+                  transition: 'all 0.2s',
+                  color: '#c9d1d9'
                 }}
               >
                 <h3 style={{ margin: '0 0 12px 0', fontSize: '1.1rem' }}>
@@ -67,8 +68,9 @@ const MyCourses = () => {
                     padding: '8px',
                     marginBottom: '12px',
                     borderRadius: '6px',
-                    border: '1px solid #ced4da',
-                    backgroundColor: '#fff',
+                    border: '1px solid #30363d',
+                    backgroundColor: '#0d1117',
+                    color: '#c9d1d9',
                     fontSize: '0.95rem'
                   }}
                 >
@@ -82,14 +84,15 @@ const MyCourses = () => {
                 <button
                   onClick={() => dispatch(unrollCourse(course.id))}
                   style={{
-                    backgroundColor: '#dc3545',
-                    color: 'white',
+                    backgroundColor: '#f85149',
+                    color: '#c9d1d9',
                     border: 'none',
                     padding: '8px 16px',
                     cursor: 'pointer',
                     borderRadius: '6px',
                     width: '100%',
-                    fontWeight: 'bold'
+                    fontWeight: 'bold',
+                    fontFamily: 'monospace'
                   }}
                 >
                   Отменить запись

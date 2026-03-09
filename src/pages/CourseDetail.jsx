@@ -13,10 +13,10 @@ const CourseDetail = () => {
   if (!course) return <h2>Курс не найден</h2>;
 
   return (
-    <div style={{ padding: '40px' }}>
+    <div style={{ padding: '40px', backgroundColor: '#0f0f0f', color: '#c9d1d9' }}>
       <Link to="/">← Назад в каталог</Link>
       <h1>{course.title}</h1>
-      <div style={{ background: '#f9f9f9', padding: '20px', borderRadius: '10px' }}>
+      <div style={{ background: '#161b22', padding: '20px', borderRadius: '10px' }}>
         <p><b>О курсе:</b> {course.desc}</p>
         <p><b>Ментор:</b> {course.mentor}</p>
         <p><b>Стоимость:</b> {course.price}</p>

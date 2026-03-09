@@ -1,0 +1,48 @@
+/* Global dark theme styles for IT-style appearance */
+body {
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #0f0f0f;
+  color: #c0c0c0;
+}
+
+/* links get bright accent */
+a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  font-family: inherit;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* utility buttons for forms */
+.btn-enroll {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: monospace;
+  background-color: #238636;
+  color: #c9d1d9;
+  transition: background-color 0.2s;
+}
+
+.btn-enroll.admin {
+  background-color: #f85149;
+}
+
+.btn-enroll:hover {
+  opacity: 0.9;
+}

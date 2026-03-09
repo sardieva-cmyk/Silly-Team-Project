@@ -19,8 +19,12 @@ const Catalog = () => {
   };
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{ padding: '20px', backgroundColor: '#0f0f0f', color: '#c9d1d9' }}>
       <h2>Все курсы программирования</h2>
+      <p style={{ fontStyle: 'italic', color: '#8b949e' }}>
+        Добро пожаловать в нашу виртуальную IT‑школу! Здесь вы можете просматривать доступные курсы и
+        записываться на обучение. Проект создан как учебный демо-сайт для команды Silly Team.
+      </p>
 
       {/* Блок добавления курса — виден только Админу */}
       {user?.role === 'admin' && (
@@ -55,7 +59,7 @@ const Catalog = () => {
               {user?.role === 'admin' ? (
                 <button 
                   onClick={() => dispatch({ type: 'DELETE_COURSE', payload: course.id })}
-                  style={{ ...buttonStyle, backgroundColor: '#e74c3c' }}
+                  style={{ ...buttonStyle, backgroundColor: '#f85149' }}
                 >
                   Удалить 
                 </button>
@@ -65,8 +69,9 @@ const Catalog = () => {
                   onClick={() => dispatch(enrollCourse(course.id))}
                   style={{ 
                     ...buttonStyle, 
-                    backgroundColor: isEnrolled ? '#bdc3c7' : '#2ecc71',
-                    cursor: isEnrolled ? 'not-allowed' : 'pointer'
+                    backgroundColor: isEnrolled ? '#444c56' : '#238636',
+                    cursor: isEnrolled ? 'not-allowed' : 'pointer',
+                    color: '#c9d1d9'
                   }}
                 >
                   {isEnrolled ? 'Вы уже записаны' : 'Записаться'}
@@ -81,10 +86,10 @@ const Catalog = () => {
 };
 
 // Стили
-const adminFormStyle = { background: '#f9f9f9', padding: '15px', borderRadius: '10px', marginBottom: '30px', border: '2px dashed #2c3e50' };
-const inputStyle = { padding: '8px', marginRight: '10px', borderRadius: '5px', border: '1px solid #ccc' };
-const addButtonStyle = { padding: '8px 15px', backgroundColor: '#2c3e50', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' };
-const cardStyle = { border: '1px solid #ddd', padding: '20px', borderRadius: '10px', width: '250px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' };
-const buttonStyle = { border: 'none', padding: '10px 15px', color: 'white', borderRadius: '5px', width: '100%', fontWeight: 'bold' };
+const adminFormStyle = { background: '#111827', padding: '15px', borderRadius: '10px', marginBottom: '30px', border: '2px dashed #4e5d6c', color: '#c9d1d9' };
+const inputStyle = { padding: '8px', marginRight: '10px', borderRadius: '5px', border: '1px solid #30363d', backgroundColor: '#0d1117', color: '#c9d1d9' };
+const addButtonStyle = { padding: '8px 15px', backgroundColor: '#238636', color: '#c9d1d9', border: 'none', borderRadius: '5px', cursor: 'pointer', fontFamily: 'monospace' };
+const cardStyle = { border: '1px solid #30363d', padding: '20px', borderRadius: '10px', width: '250px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)', backgroundColor: '#161b22', color: '#c9d1d9' };
+const buttonStyle = { border: 'none', padding: '10px 15px', color: 'white', borderRadius: '5px', width: '100%', fontWeight: 'bold', fontFamily: 'monospace' };
 
 export default Catalog;

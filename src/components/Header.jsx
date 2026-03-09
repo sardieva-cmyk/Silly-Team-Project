@@ -22,6 +22,7 @@ const Header = () => {
       
       <nav style={{ display: 'flex', alignItems: 'center' }}>
         <Link to="/" style={linkStyle}>Каталог</Link>
+        <Link to="/about" style={linkStyle}>О проекте</Link>
         
         {/* Студент видит "Мои курсы", Админ — нет (ему они не нужны для обучения) */}
         {user?.role === 'student' && (
@@ -49,10 +50,10 @@ const Header = () => {
 };
 
 // Стили
-const headerStyle = { display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 40px', background: '#2c3e50', color: 'white' };
-const linkStyle = { color: 'white', marginLeft: '20px', textDecoration: 'none', fontWeight: 'bold' };
-const badgeStyle = { background: '#e74c3c', padding: '2px 8px', borderRadius: '10px', fontSize: '12px' };
-const logoutButtonStyle = { background: 'transparent', border: '1px solid #e74c3c', color: '#e74c3c', padding: '5px 10px', borderRadius: '5px', cursor: 'pointer', fontWeight: 'bold' };
-const loginLinkStyle = { ...linkStyle, color: '#2ecc71' };
+const headerStyle = { display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 40px', background: '#0d1117', color: '#c9d1d9' };
+const linkStyle = { color: '#58a6ff', marginLeft: '20px', textDecoration: 'none', fontWeight: 'bold' };
+const badgeStyle = { background: '#f85149', padding: '2px 8px', borderRadius: '10px', fontSize: '12px' };
+const logoutButtonStyle = { background: 'transparent', border: '1px solid #f85149', color: '#f85149', padding: '5px 10px', borderRadius: '5px', cursor: 'pointer', fontWeight: 'bold' };
+const loginLinkStyle = { ...linkStyle, color: '#2ea043' };
 
 export default Header;
